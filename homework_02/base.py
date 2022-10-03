@@ -19,9 +19,13 @@ class Vehicle(ABC):
         if not self.started:
             raise exceptions.LowFuelError
 
-    def move(self):
-        if self.weight / self.fuel_consumption > self.fuel:
-            raise exceptions.NotEnoughtFuel
+    def move(self, distance):
+        if distance * self.fuel_consumption > self.fuel:
+            raise exceptions.NotEnoughFuel
+        elif self.fuel == 0:
+            raise exceptions.NotEnoughFuel
+        else:
+            self.fuel = self.fuel - distance * self.fuel_consumption
 
     def __str__(self):
         return f"{self.__class__.__name__} (weight = {self.weight}, started = {self.started}, fuel = {self.fuel}, fuel_consumption = {self.fuel_consumption})"
@@ -33,7 +37,7 @@ def main():
         test.start()
     except exceptions.LowFuelError:
         print("low fuel")
-    except exceptions.NotEnoughtFuel:
+    except exceptions.NotEnoughFuel:
         print("not enought fuel")
     print(test)
 

@@ -10,7 +10,7 @@ class LowFuelError(Exception):
     pass
 
 
-class NotEnoughtFuel(Exception):
+class NotEnoughFuel(Exception):
     pass
 
 
