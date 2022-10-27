@@ -14,13 +14,8 @@ def read_root():
 
 @app.get("/ping/")
 def view():
-    return JSONResponse(
-        {
-            "message": Response(status_code=status.HTTP_200_OK),
-        }
-    )
+    return {"message": "pong"}
 
-
-@app.get("/{url_path:path}")
-def all_other(url_path: str):
-    return {"request to": url_path}
+# @app.get("/{url_path:path}")
+# def all_other(url_path: str):
+#     return {"request to": url_path}
