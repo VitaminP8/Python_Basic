@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    index page
+{% endblock title %}
+
+{% block body %}
+    <div>
+        <ul class="list-group">
+            {% for product in products %}
+                <li class="list-group-item">{{ product.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div>
+        <a class="btn btn-sm btn-outline-info col-2"
+           role="button"
+           style="margin: 2PX"
+           href="{{ url_for('about_view', products=products)}}">
+            More info
+        </a>
+    </div>
+{% endblock body %}
