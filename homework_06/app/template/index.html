@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    index page
+{% endblock title %}
+
+{% block body %}
+    <div>
+        <ul class="list-group">
+            {% for product in products %}
+                <li class="list-group-item">
+                    {{ product.name }}
+                    <a class="btn btn-sm btn-danger float-end"
+                       href="{{ url_for('delete_product', product_id=product.id) }}">
+                        Delete
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div>
+        <a class="btn btn-sm btn-outline-info col-2"
+           role="button"
+           style="margin: 2PX"
+           href="{{ url_for('about_view', products=products)}}">
+            More info
+        </a>
+        <a class="btn btn-sm btn-outline-primary col-2"
+           role="button"
+           style="margin: 2PX"
+           href="{{ url_for('create_product')}}">
+            Create product
+        </a>
+    </div>
+{% endblock body %}

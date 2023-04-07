@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    delete page
+{% endblock title %}
+
+
+{% block body %}
+    <h2>Are you sure you want to delete product {{ product.name }}?</h2>
+
+    <form method="post" class="my-2">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+    </form>
+
+    <div class="my-3">
+        <a class="btn btn-secondary" href="{{ url_for('index_view') }}">
+            Back to products list
+        </a>
+    </div>
+{% endblock body %}

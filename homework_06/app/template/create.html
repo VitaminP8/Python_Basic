@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% from 'macros/form-errors-list.html' import form_errors_list %}
+
+{% block title %}
+    create page
+{% endblock title %}
+
+
+{% block body %}
+<form method="post" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <div class="mb-3">
+            {{ form.name.label(class="form-label") }}
+            {{ form_errors_list(form.name.errors) }}
+            {{ form.name(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.info.label(class="form-label") }}
+            {{ form_errors_list(form.info.errors) }}
+            {{ form.info(class="form-control") }}
+        </div>
+        <div class="button-wrapper">
+            <button id="btn-create" class="btn btn-primary" type="submit">Create</button>
+        </div>
+    </form>
+
+    <div class="my-3">
+        <a class="btn btn-secondary" href="{{ url_for('index_view') }}">
+            Back to products list
+        </a>
+    </div>
+{% endblock body %}
