@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index page</title>
+</head>
+<body>
+    <ul>
+        {% for user in users %}
+            <li>
+                {{user.name}} {{user.surname}}
+                <ol>
+                    {% for goal in user.goal_set.all %}
+                        <li>
+                            {{goal.name}}
+                            <ul>
+                                {% for category in goal.categories.all %}
+                                    <li>
+                                        {{ category.name }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
