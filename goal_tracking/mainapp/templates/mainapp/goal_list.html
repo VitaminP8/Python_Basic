@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+{#    <div class="list-group">#}
+{#        {% for goal in goals %}#}
+{#             <a href="goal-detail/{{ goal.id }}/" class="list-group-item list-group-item-action list-group-item-info">{{ goal.name }} </a>#}
+{#        {% endfor %}#}
+{#        <a class="btn btn-primary" href="/goal-create/">Создать</a>#}
+{#    </div>#}
+    <ul class="list-group">
+        {% for goal in goals %}
+            <li class="list-group-item list-group-item-info">
+                <a class="text-decoration-none text-dark" href="/goal-detail/{{goal.id}}/">{{goal.name}}</a>
+                <span>
+                    <a class="btn btn-danger float-end" href="/goal-delete/{{goal.id}}/">удалить</a>
+                </span>
+                <span>
+                    <a class="btn btn-warning float-end" href="/goal-update/{{goal.id}}/">обновить</a>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+    <a class="btn btn-primary" href="/goal-create/">Создать</a>
+{% endblock %}

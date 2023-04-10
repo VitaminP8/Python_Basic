@@ -16,10 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from mainapp.views import index_view
+from mainapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include('debug_toolbar.urls')),
-    path('', index_view),
+    path('', views.index_view),
+    path('category-list/', views.CategoryListView.as_view()),
+    path('goal-list/', views.GoalListView.as_view()),
+    path('goal-create/', views.GoalCreateView.as_view()),
+    path('goal-delete/<int:pk>/', views.GoalDeleteView.as_view()),
+    path('goal-update/<int:pk>/', views.GoalUpdateView.as_view()),
+    path('goal-detail/<int:pk>/', views.GoalDetailView.as_view()),
 ]

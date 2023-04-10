@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<ul class="list-group">
+    Вы действительно хотите удалить {{goal.name}}?
+    <form method="POST">
+      {% csrf_token %}
+      <button class="btn btn-danger">Да</button>
+    </form>
+    <a class="btn btn-info" href="/goal-list/">вернуться</a>
+</ul>
+
+{% endblock %}

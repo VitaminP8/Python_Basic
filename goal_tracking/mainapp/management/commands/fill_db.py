@@ -23,7 +23,7 @@ class Command(BaseCommand):
 
         finish_hw = Goal.objects.create(
             name="закончить дз",
-            days_limit=5,
+            deadline="2023-4-12",
             user=gleb,
         )
         finish_hw.categories.clear()
@@ -31,7 +31,7 @@ class Command(BaseCommand):
         finish_hw.save()
         do_work = Goal.objects.create(
             name="сделать работу",
-            days_limit = 10,
+            deadline="2023-5-14",
             user = nikita,
         )
         do_work.categories.clear()
@@ -39,7 +39,7 @@ class Command(BaseCommand):
         do_work.save()
         buy_food = Goal.objects.create(
             name='купить еду',
-            days_limit=2,
+            deadline="2023-4-23",
             user=nikita,
         )
         buy_food.categories.clear()
