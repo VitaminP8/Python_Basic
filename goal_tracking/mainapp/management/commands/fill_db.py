@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from mainapp.models import User, Category, Goal
+from userapp.models import MyUser
 
 
 class Command(BaseCommand):
@@ -10,6 +11,11 @@ class Command(BaseCommand):
         Category.objects.all().delete()
         Goal.objects.all().delete()
 
+        # create superuser
+        try:
+            MyUser.objects.create_superuser('admin', 'admin@admin.com', 'admin123')
+        except:
+            print('Админ уже был создан раньше')
 
         gleb = User.objects.create(name="Глеб", surname="Агапов")
         nikita = User.objects.create(name="Никита", surname="Рижский")

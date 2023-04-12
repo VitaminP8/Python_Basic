@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from mainapp import views
+from userapp.views import RegisterView, LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +29,7 @@ urlpatterns = [
     path('goal-delete/<int:pk>/', views.GoalDeleteView.as_view()),
     path('goal-update/<int:pk>/', views.GoalUpdateView.as_view()),
     path('goal-detail/<int:pk>/', views.GoalDetailView.as_view()),
+    path('register/', RegisterView.as_view()),
+    path('login/', LoginView.as_view()),
+    path('logout/', LogoutView.as_view()),
 ]
