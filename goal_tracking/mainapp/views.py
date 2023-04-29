@@ -32,32 +32,34 @@ class GoalListView(UserPassesTestMixin, ListView):
     def test_func(self):
         return self.request.user.is_authenticated
 
-class GoalCreateView(CreateView):
+class GoalCreateView(LoginRequiredMixin, CreateView):
     model = Goal
     # template_name = "goal_form"
     form_class = GoalForm
     success_url = '/goal-list/'
 
-
     def form_valid(self, form):
         form.instance.user = self.request.user
+        print("****")
+        print(self.request.user.username)
+        print("****")
         return super().form_valid(form)
 
 
-class GoalDeleteView(DeleteView):
+class GoalDeleteView(LoginRequiredMixin, DeleteView):
     model = Goal
     # template_name = "goal_delete"
     context_object_name = "goal"
     success_url = '/goal-list/'
 
-class GoalUpdateView(UpdateView):
+class GoalUpdateView(LoginRequiredMixin, UpdateView):
     model = Goal
     form_class = GoalForm
     # template_name = "goal_form"
     success_url = '/goal-list/'
 
 
-class GoalDetailView(DetailView):
+class GoalDetailView(LoginRequiredMixin, DetailView):
     model = Goal
     # template_name = "goal_detail"
     context_object_name = "goal"
