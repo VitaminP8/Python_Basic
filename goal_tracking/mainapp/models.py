@@ -1,4 +1,5 @@
 from django.db import models
+from userapp.models import MyUser
 
 # Create your models here.
 class User (models.Model):
@@ -26,7 +27,7 @@ class Goal (models.Model):
     deadline = models.DateField(blank=False, null=False)
     started_at = models.DateField(auto_now_add=True)
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(MyUser, blank=True, null=True, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
 
     def __str__(self):
